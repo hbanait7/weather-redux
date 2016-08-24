@@ -1,15 +1,13 @@
-import React, { Component } from 'react'
-import HeaderTitle from './header-title.js'
+import React from 'react';
+import HeaderTitle from './header-title.js';
 
-class HeaderContainer extends Component {
-  render() {
+const HeaderContainer = () => {
 
     return (
       <div className='page-header'>
         <HeaderTitle />
       </div>
-    )
-  }
-}
+    );
+};
 
-export default HeaderContainer
+export default HeaderContainer;

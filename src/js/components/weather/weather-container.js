@@ -1,26 +1,18 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux';
-import {
-  weather
-} from '../../actions/actions';
 
 class WeatherContainer extends Component {
-  componentWillMount() {
-    this.props.weather();
-  }
+
+  // compenentWillMount
 
   render() {
     return (
-      <div className='row'>
+      <div>
         hello from WeatherContainer
       </div>
     )
   }
 }
 
-// function mapStateToProps(state) { return {} }
 
-export default connect(() => ({
-}), {
-  weather
-})(WeatherContainer)
+export default WeatherContainer
