@@ -1,23 +1,37 @@
-export function weather() {
+const apiKey = 'b948a94521a4390a'
+const apiUrl = 'http://api.wunderground.com/api/' + apiKey + '/conditions/q/'
+
+export const REQUEST_WEATHER = 'REQUEST_WEATHER'
+export const RECEIVE_WEATHER = 'RECEIVE_WEATHER'
+
+export function requestWeather(data) {
   return {
-    type: 'INC',
-    // payload: 1
+    type: REQUEST_WEATHER,
+    payload: data
   }
-  // return async (dispatch, getState) => {
-  //   const result = await fetch(url)
-    
-  //   dispatch({
-  //     type: 'WEATHER',
-  //     payload: result.data
-  //   })
-  // }
-  // return (dispatch, getState) => {
-  //   fetch(url).then(result => {
-  //     dispatch({
-  //       type: 'WEATHER',
-  //       payload: result.data
-  //     })
-  //   }).catch(error => console.log(error));
-  // }
 }
+
+function receiveWeather(json) {
+  return {
+    type: RECEIVE_WEATHER,
+    payload: json
+  }
+}
+
+
+export function fetchWeather(city) {
+  const init = {
+    method: 'GET'
+  }
+  return dispatch => {
+    dispatch(requestWeather(city))
+    return fetch(apiUrl + city + '.json', init)
+      .then(response => response.json())
+      .then(json => dispatch(receiveWeather(json)))
+  }
+}
+
+
+
+
 

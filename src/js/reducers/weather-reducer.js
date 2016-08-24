@@ -1,23 +1,22 @@
-const initialValue = {
-  current: 0
-}
+import { REQUEST_WEATHER, RECEIVE_WEATHER } from '../actions/actions.js'
 
-function weatherReducer(state = initialValue, action) {
+export function weather(state = {
+  isFetching: false,
+  city: '',
+  country: ''
+}, action) {
   switch (action.type) {
-    case 'INC': 
-      return {
-        ...state,
-        current: state.current + 1
-      }
-    case 'WEATHER':
-      console.log('Dispatched WEATHER action with data:', action.payload);
-      return {
-        ...state,
-        // weather: payload.weather // <- replace with something meaningful
-      }
-    default: 
+    case REQUEST_WEATHER:
+      return Object.assign({}, state, {
+        isFetching: true
+      })
+    case RECEIVE_WEATHER:
+      return Object.assign({}, state, {
+        isFetching: false,
+        city: action.payload.current_observation.observation_location.full,
+        country: action.payload.current_observation.observation_location.country
+      })
+    default:
       return state
   }
 }
-
-export default weatherReducer
