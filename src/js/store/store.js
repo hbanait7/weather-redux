@@ -1,9 +1,9 @@
-import { applyMiddleware, createStore, compose } from 'redux'
+import { applyMiddleware, createStore, compose } from 'redux';
 
-import rootReducer from '../reducers/index.js'
-import thunk from 'redux-thunk'
-import logger from 'redux-logger'
-import { requestWeather, fetchWeather } from '../actions/actions.js'
+import rootReducer from '../reducers/index.js';
+import thunk from 'redux-thunk';
+import logger from 'redux-logger';
+import { requestWeather, fetchWeather } from '../actions/actions.js';
 
 
 const store = createStore(
@@ -15,7 +15,6 @@ const store = createStore(
     ),
     window.devToolsExtension ? window.devToolsExtension() : f => f
   )
-)
+);
 
-store.dispatch(fetchWeather('Toronto, Canada'))
-export default store
+export default store;
