@@ -1,13 +1,29 @@
 import React, { PropTypes } from 'react';
 
-const Location = ({city, country}) => {
+const Location = ({city, country, browser}) => {
 
-  var locationStyle = {
-    
+  const commonStyle = {
+    textAlign: 'center'
+  };
+
+  const locationStyle = {
+    regular: {
+      ...commonStyle,
+      fontSize: '60px'
+    },
+    extraSmall: {
+      ...commonStyle,
+      fontSize: '25px'
+    }
   };
 
   return (
-    <p style={locationStyle}>{city}{country}</p>
+    <p style={browser.mediaType === "extraSmall"
+      ? locationStyle.extraSmall 
+      : locationStyle.regular}
+    >
+    {city}{country}
+    </p>
   );
 }
 

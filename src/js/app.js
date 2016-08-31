@@ -4,7 +4,7 @@ import WeatherContainer from './components/weather/weather-container.js'
 
 const App = () => {
     return (
-      <div className='container'>
+      <div className="container">
         <HeaderContainer />
         <WeatherContainer />
       </div> 
