@@ -9,7 +9,7 @@ const WeatherNumber = ({weather_number, browser}) => {
   const numberStyle = {
     regular: {
       ...commonStyle,
-      fontSize: '75px'
+      fontSize: '100px'
     },
     extraSmall: {
       ...commonStyle,
@@ -18,13 +18,13 @@ const WeatherNumber = ({weather_number, browser}) => {
   };
 
   return (
-    <span 
+    <p 
       style={browser.mediaType === "extraSmall"
       ? numberStyle.extraSmall
       : numberStyle.regular}
     >
-    {weather_number}
-    </span>
+    {weather_number}&#8451;
+    </p>
   );
 }
 

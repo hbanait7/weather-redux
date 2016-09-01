@@ -7,9 +7,8 @@ export function weather(state = {
   weather_image: '',
   weather_description: '',
   weather_number: '',
-  feels_like: '',
   wind_dir: '',
-  wind_kph: '',
+  wind_speed: '',
   humidity: '',
   precipitation: ''
 }, action) {
@@ -26,9 +25,8 @@ export function weather(state = {
         weather_image: action.payload.current_observation.icon_url,
         weather_description: action.payload.current_observation.weather,
         weather_number: action.payload.current_observation.temp_c,
-        feels_like: action.payload.current_observation.feelslike_c,
         wind_dir: action.payload.current_observation.wind_dir,
-        wind_kph: action.payload.current_observation.wind_kph,
+        wind_speed: action.payload.current_observation.wind_kph,
         humidity: action.payload.current_observation.relative_humidity,
         precipitation: action.payload.current_observation.precip_today_in
       });

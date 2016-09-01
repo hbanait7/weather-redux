@@ -4,6 +4,7 @@ import Location from './location.js';
 import Description from './description.js';
 import Image from './image.js';
 import WeatherNumber from './number.js';
+import Panel from './panel.js';
 
 
 class WeatherContainer extends Component {
@@ -14,12 +15,16 @@ class WeatherContainer extends Component {
 
   render() {
 
-    const { browser } = this.props;
-    const { city } = this.props.weather;
-    const { country } = this.props.weather;
+    const { browser }             = this.props;
+    const { city }                = this.props.weather;
+    const { country }             = this.props.weather;
     const { weather_description } = this.props.weather;
-    const { weather_image } = this.props.weather;
-    const { weather_number } = this.props.weather;
+    const { weather_image }       = this.props.weather;
+    const { weather_number }      = this.props.weather;
+    const { humidity }            = this.props.weather;
+    const { precipitation }       = this.props.weather;
+    const { wind_dir }            = this.props.weather;
+    const { wind_speed }          = this.props.weather;
 
     return (
       <div>
@@ -48,6 +53,21 @@ class WeatherContainer extends Component {
             weather_number={weather_number}
             browser={browser}
           />
+        </div>
+
+        <div className="row">
+          <div className="col-md-3 col-xs-6">
+            <Panel title="Humidity" color="panel panel-success" content={humidity} />
+          </div>
+          <div className="col-md-3 col-xs-6">
+            <Panel title="Precipitation" color="panel panel-info" content={precipitation + ' (in.)'} />
+          </div>
+          <div className="col-md-3 col-xs-6">
+            <Panel title="Wind Direction" color="panel panel-warning" content={wind_dir} />
+          </div>
+          <div className="col-md-3 col-xs-6">
+            <Panel title="Wind Speed" color="panel panel-danger" content={wind_speed + ' km/h'} />
+          </div>                                        
         </div>
 
       </div>
