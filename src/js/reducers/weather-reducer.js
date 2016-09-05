@@ -1,4 +1,4 @@
-import { REQUEST_WEATHER, RECEIVE_WEATHER } from '../actions/actions.js';
+import { REQUEST_WEATHER, RECEIVE_WEATHER } from '../actions/weather-actions.js';
 
 export function weather(state = {
   isFetching: false,

@@ -3,8 +3,10 @@ import { render } from 'react-dom';
 import { Provider } from 'react-redux';
 import App from './app.js';
 import store from './store/store.js';
-import { fetchingWeather } from './actions/actions.js';
+import { fetchingWeather } from './actions/weather-actions.js';
+import { fetchingLongterm } from './actions/longterm-actions.js';
 
+store.dispatch(fetchingLongterm('Toronto' + ', ' + 'Canada'));  
 store.dispatch(fetchingWeather('Toronto' + ', ' + 'Canada'));
 
 render(

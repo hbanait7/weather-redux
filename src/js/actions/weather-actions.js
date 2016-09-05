@@ -1,5 +1,4 @@
-const apiKey = 'b948a94521a4390a';
-const apiUrl = 'http://api.wunderground.com/api/' + apiKey + '/conditions/q/';
+import { apiKey, weatherUrl } from './api.js';
 
 export const REQUEST_WEATHER = 'REQUEST_WEATHER';
 export const RECEIVE_WEATHER = 'RECEIVE_WEATHER';
@@ -10,7 +9,7 @@ export function requestWeather() {
   };
 };
 
-function receiveWeather(json) {
+export function receiveWeather(json) {
   return {
     type: RECEIVE_WEATHER,
     payload: json
@@ -23,7 +22,7 @@ export function fetchingWeather(location) {
   };
   return dispatch => {
     dispatch(requestWeather())
-    return fetch(apiUrl + location + '.json', init)
+    return fetch(weatherUrl + location + '.json', init)
       .then(response => response.json())
       .then(json => dispatch(receiveWeather(json)))
   };  
@@ -40,6 +39,7 @@ export function fetchingWeather(location) {
 //       // .then(json => dispatch(receiveWeather(json)))
 //   };  
 // };
+
 
 
 
