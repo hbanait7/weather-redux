@@ -25,7 +25,7 @@ class LongTermContainer extends Component {
 
     return (
       <div style={style.rowMargin} className="row">
-        <div style={style.header}>Longterm Forecast:</div>
+        <div style={style.header}>Longterm Forecast</div>
         {
           forecast.slice(0, 6).map((item, index) => (
             <Day key={index} data={item} />

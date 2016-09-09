@@ -1,12 +1,31 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import { fetchingWeather } from '../../actions/weather-actions.js';
+import { fetchingLongterm } from '../../actions/longterm-actions.js';
 
 class Search extends Component {
 
   constructor(props) {
     super(props);
+    
+    this.state = {
+      text: ''
+    };
+
+    this.onChange = this.onChange.bind(this);
+    this.onSubmit = this.onSubmit.bind(this);
+
   }
 
+  onChange(e) {
+    this.setState({text: e.target.value});
+  }
+
+  onSubmit(e) {
+    e.preventDefault();
+    this.props.dispatch(fetchingWeather(this.state.text));
+    this.props.dispatch(fetchingLongterm(this.state.text));
+  }
 
   render() {
 
@@ -30,11 +49,23 @@ class Search extends Component {
             : inputStyle.regular
           }  
           className="form-search form-inline"
+          onSubmit={this.onSubmit}
         >
           <div className="input-group">
-            <input type="text" className="form-control" placeholder="Search..." />
+            <input 
+              type="text" 
+              className="form-control" 
+              placeholder="Search..." 
+              onChange={this.onChange}
+              value={this.state.text}
+            />
             <span className="input-group-btn">
-              <button type="submit" className="btn btn-primary"> Search</button>
+              <button 
+                type="submit" 
+                className="btn btn-primary"
+              > 
+              Search
+              </button>
             </span>
           </div>
         </form>

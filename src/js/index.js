@@ -5,9 +5,12 @@ import App from './app.js';
 import store from './store/store.js';
 import { fetchingWeather } from './actions/weather-actions.js';
 import { fetchingLongterm } from './actions/longterm-actions.js';
+import { fetchingRadar } from './actions/radar-actions.js';
+import { radarUrl } from './actions/api.js';
 
 store.dispatch(fetchingLongterm('Toronto' + ', ' + 'Canada'));  
 store.dispatch(fetchingWeather('Toronto' + ', ' + 'Canada'));
+store.dispatch(fetchingRadar(radarUrl));
 
 render(
   <Provider store={store}>
