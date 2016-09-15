@@ -21,16 +21,35 @@ class LongTermContainer extends Component {
       }
     };
 
-    const forecast = this.props.longterm.longterm.forecastday || [];
+    const { city } = this.props.weather;
+
+    
+
+    let display;
+
+    
+
+    if (city !== 'not found') {
+      const forecast = this.props.longterm.longterm.forecastday || [];
+      display = (
+        <div style={style.rowMargin} className="row">
+          <div style={style.header}>Longterm Forecast</div>
+          {
+            forecast.slice(0, 6).map((item, index) => (
+              <Day key={index} data={item} />
+            ))
+          }
+        </div>        
+      )
+    } else {
+      display = (
+        <span></span>
+      )
+    }
 
     return (
-      <div style={style.rowMargin} className="row">
-        <div style={style.header}>Longterm Forecast</div>
-        {
-          forecast.slice(0, 6).map((item, index) => (
-            <Day key={index} data={item} />
-          ))
-        }
+      <div>
+        {display}
       </div>
     );
   }
@@ -42,7 +61,8 @@ LongTermContainer.propTypes = {
 
 function mapStateToProps(state) {
   return {
-    longterm: state.longterm
+    longterm: state.longterm,
+    weather: state.weather
   };
 }
 

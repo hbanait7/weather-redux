@@ -1,7 +1,9 @@
 import { apiKey, weatherUrl } from './api.js';
+import 'whatwg-fetch';
 
 export const REQUEST_WEATHER = 'REQUEST_WEATHER';
 export const RECEIVE_WEATHER = 'RECEIVE_WEATHER';
+const RECEIVE_WEATHER_ERR = 'RECEIVE_WEATHER_ERR';
 
 export function requestWeather() {
   return {
@@ -10,6 +12,7 @@ export function requestWeather() {
 };
 
 export function receiveWeather(json) {
+  console.log(json);
   return {
     type: RECEIVE_WEATHER,
     payload: json
@@ -25,7 +28,7 @@ export function fetchingWeather(location) {
     return fetch(weatherUrl + location + '.json', init)
       .then(response => response.json())
       .then(json => dispatch(receiveWeather(json)))
-  };  
+  };
 };
 
 // To parse json:
@@ -40,7 +43,9 @@ export function fetchingWeather(location) {
 //   };  
 // };
 
-
-
+// No error was returned from the api. Got an object back. 
+// That is the purpose of 
+// if (action.payload.current_observation == undefined) {
+// in the reducer.
 
 

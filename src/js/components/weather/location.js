@@ -13,6 +13,7 @@ const Location = ({city, country, browser}) => {
     },
     extraSmall: {
       ...commonStyle,
+      marginTop: '20px',
       fontSize: '25px'
     }
   };

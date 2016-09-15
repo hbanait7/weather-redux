@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { fetchingWeather } from '../../actions/weather-actions.js';
 import { fetchingLongterm } from '../../actions/longterm-actions.js';
+import { fetchingRadar } from '../../actions/radar-actions.js';
 
 class Search extends Component {
 
@@ -25,6 +26,7 @@ class Search extends Component {
     e.preventDefault();
     this.props.dispatch(fetchingWeather(this.state.text));
     this.props.dispatch(fetchingLongterm(this.state.text));
+    this.props.dispatch(fetchingRadar(this.state.text));
   }
 
   render() {
@@ -55,7 +57,7 @@ class Search extends Component {
             <input 
               type="text" 
               className="form-control" 
-              placeholder="Search..." 
+              placeholder="Search... ex. Montreal Canada" 
               onChange={this.onChange}
               value={this.state.text}
             />

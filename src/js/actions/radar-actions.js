@@ -21,6 +21,6 @@ export function receiveRadar(url) {
 export function fetchingRadar(location) {
   return dispatch => {
     dispatch(requestRadar()) 
-    dispatch(receiveRadar(location))
+    dispatch(receiveRadar('http://api.wunderground.com/api/' + apiKey + '/animatedradar/q/' + location + '.gif?newmaps=1&timelabel=1&timelabel.y=10&num=5&delay=50'))
   };
 };

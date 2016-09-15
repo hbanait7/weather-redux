@@ -21,18 +21,35 @@ class RadarContainer extends Component {
       },
       extraSmall: {
         ...commonStyle,
+        margin: '20px 0px',
         width: '100%',
       }
     };
 
+    const { city } = this.props.weather;
+
+    let display;
+
+    if (city !== 'not found') {
+      display = (
+        <div>
+          <img 
+            src={this.props.radar.radarUrl} 
+            style={this.props.browser.mediaType === ("extraSmall")
+              ? imgStyle.extraSmall
+              : imgStyle.regular}
+          />
+        </div>
+      )
+    } else {
+      display = (
+        <span></span>
+      )
+    }
+
     return (
       <div>
-        <img 
-          src={this.props.radar.radarUrl} 
-          style={this.props.browser.mediaType === ("extraSmall")
-            ? imgStyle.extraSmall
-            : imgStyle.regular}
-        />
+        {display}
       </div>
     );
   }
@@ -46,7 +63,8 @@ RadarContainer.propTypes = {
 function mapStateToProps(state) {
   return {
     radar: state.radar,
-    browser: state.browser
+    browser: state.browser,
+    weather: state.weather
   };
 }
 

@@ -1,4 +1,5 @@
 import { REQUEST_LONGTERM, RECEIVE_LONGTERM } from '../actions/longterm-actions.js';
+import _ from 'lodash';
 
 export function longterm(state = {
   isFetching: false,
@@ -12,7 +13,7 @@ export function longterm(state = {
     case RECEIVE_LONGTERM: 
       return Object.assign({}, state, {
         isFetching: false,
-        longterm: action.payload.forecast.simpleforecast
+        longterm: _.get(action, 'payload.forecast.simpleforecast')
       });
     default:
       return state
