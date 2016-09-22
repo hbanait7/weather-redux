@@ -18,8 +18,4 @@ const Panel = ({color, content, browser, title}) => {
   );
 }
 
-Panel.propTypes = {
-
-};
-
 export default Panel;

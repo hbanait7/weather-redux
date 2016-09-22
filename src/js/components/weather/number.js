@@ -28,17 +28,4 @@ const WeatherNumber = ({weather_number, browser}) => {
   );
 }
 
-// WeatherNumber.propTypes = {
-  // Unable to resolve:
-  
-  // weather_number: PropTypes.number.isRequired
-  // produces this error:
-  // Failed prop type: Invalid prop `weather_number` of type `string` supplied to `WeatherNumber`, expected `number`.
-  
-  // But then switching type:
-  // weather_number: PropTypes.string.isRequired
-  // produces this error:
-  // Failed prop type: Invalid prop `weather_number` of type `number` supplied to `WeatherNumber`, expected `string`.
-// };
-
 export default WeatherNumber;

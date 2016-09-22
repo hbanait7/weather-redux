@@ -1,9 +1,7 @@
 import { apiKey, weatherUrl } from './api.js';
-import 'whatwg-fetch';
 
 export const REQUEST_WEATHER = 'REQUEST_WEATHER';
 export const RECEIVE_WEATHER = 'RECEIVE_WEATHER';
-const RECEIVE_WEATHER_ERR = 'RECEIVE_WEATHER_ERR';
 
 export function requestWeather() {
   return {
@@ -12,7 +10,6 @@ export function requestWeather() {
 };
 
 export function receiveWeather(json) {
-  console.log(json);
   return {
     type: RECEIVE_WEATHER,
     payload: json

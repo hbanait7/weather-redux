@@ -91,9 +91,6 @@ class WeatherContainer extends Component {
   }
 }
 
-WeatherContainer.propTypes = {
- 
-};
 
 function mapStateToProps(state) {
   return {
